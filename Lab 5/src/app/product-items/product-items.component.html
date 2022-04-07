@@ -1,0 +1,33 @@
+<div *ngFor="let product of products" style = "white-space: pre-line" class="prods">
+
+    <div *ngIf="product.prodcategory == categoryId && product.shows">
+      <h3>
+        <a [title]="product.name + ' details'" href="{{product.link}}" [routerLink]="['/products', product.id]"> {{ product.name }}</a>
+      </h3>
+      <img src="{{product.image}}" width="200px"[routerLink]="['/products', product.id]"/>
+      <p *ngIf="product.description" >  Description: {{ product.description }}</p>
+      <p *ngIf="product.rating" > Rating: {{ product.rating }}</p>
+      <p *ngIf="product.price"> Price: {{product.price}}$</p>
+      <span id="Butt">
+          <a [href] = "'https://telegram.me/share/url?url=' + product.link " target="_blank">
+      <button type="button" (click)="share()">
+        Share
+      </button>
+      </a>
+      <app-product-alerts
+        [product]="product"
+        (notify)="onNotify()">
+      </app-product-alerts>
+      </span>
+      <button type="button" (click)="removeD(product)">Remove</button>
+      <p><button type="button" (click)="likem(product)">Like</button> {{product.likes}}</p>
+      <p><button type="button" (click)="likem0(product)">Rating</button> {{product.rating}}</p>
+      <p><button type="button" (click)="likem1(product)">1</button> {{product.rating1}}</p>
+      <p><button type="button" (click)="likem2(product)">2</button> {{product.rating2}}</p>
+      <p><button type="button" (click)="likem3(product)">3</button> {{product.rating3}}</p>
+      <p><button type="button" (click)="likem4(product)">4</button> {{product.rating4}}</p>
+      <p><button type="button" (click)="likem5(product)">5</button> {{product.rating5}}</p>
+
+
+    </div>
+  </div>

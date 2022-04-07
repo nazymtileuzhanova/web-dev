@@ -1,0 +1,11 @@
+.prods{
+    display: flex;
+    flex-flow: column;
+    width: 1000px;
+
+  }
+  a {
+    color:rgb(87, 85, 85);
+    text-decoration: none;
+    font-size: 100%;
+}

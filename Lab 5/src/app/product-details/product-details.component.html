@@ -1,0 +1,15 @@
+<div *ngIf="product">
+  <h3>
+    <a href="{{product.link}}">
+      {{ product.name }}
+    </a>
+  </h3>
+  <img src="{{product.image}}" width="200px">
+  <h4>{{ product.price}}$</h4>
+  <button>Buy</button>
+  <a href="https://telegram.me/share/url?url={{product.link}}">
+    <button>
+      Share
+    </button>
+  </a>
+</div>
