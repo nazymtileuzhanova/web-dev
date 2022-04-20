@@ -18,10 +18,28 @@ def vacancy_list(request):
 
 def company_details(request, company_id):
     try:
-        company = Company.objects.get(id=company_id)
+        companies = Company.objects.get(id=company_id)
     except Company.DoesNotExist as e:
         return JsonResponse({'message'}, str(e), status=400)
     return JsonResponse(company.to_json())
+
+
+def company_active(request):
+    try:
+        companies = Company.objects.filter(active=True)
+        companiesto_json = [company.to_json() for company in companies]
+    except Company.DoesNotExist as e:
+        return JsonResponse({'message'}, str(e), status=400)
+    return JsonResponse(companiesto_json, safe=False)
+
+
+def company_nonactive(request):
+    try:
+        companies = Company.objects.filter(active=False)
+        companiesto_json = [company.to_json() for company in companies]
+    except Company.DoesNotExist as e:
+        return JsonResponse({'message'}, str(e), status=400)
+    return JsonResponse(companiesto_json, safe=False)
 
 
 def vacancy_details(request, vacancy_id):

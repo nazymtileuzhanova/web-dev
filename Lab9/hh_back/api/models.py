@@ -6,6 +6,7 @@ class Company(models.Model):
     description = models.TextField(max_length=200, default='')
     city = models.CharField(max_length=20, default='')
     address = models.TextField(max_length=200, default='')
+    active = models.BooleanField(default=True)
 
     def to_json(self):
         return {
@@ -14,8 +15,10 @@ class Company(models.Model):
             'description': self.description,
             'city': self.city,
             'address': self.address,
+            'active': self.active,
 
         }
+
 
 class Vacancy(models.Model):
     name = models.CharField(max_length=100, default='')
